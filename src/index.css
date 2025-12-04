@@ -16,12 +16,15 @@
 }
 
 .img-overlay{
-    position: absolute;
+    /* position: absolute;
     top: 0;
     left: 0;
-    /* min-height: 100vh; */
     height: 100%;
-    width: 100%;
+    width: 100%; */
+    position: relative;
+    padding: 30px 0;
+    height: auto;
+    /* min-height: 100vh; */
     background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -31,6 +34,7 @@
     background-size: cover ;
     background-position: center;
     min-height: 300px;
-    position:relative;
+    position:relative; /*burayi relative yapma sebebimiz kalmadi aslinda ama daha sonra bir absolute child eklersek diye durabilir, halihazirda relative kalmasi sorun degil bir seyi etkilemiyor*/
+    justify-content: center;
 }
 

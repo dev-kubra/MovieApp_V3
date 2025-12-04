@@ -6,9 +6,12 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import App from "./App";
 import "./index.css";
+import { ThemeContextProvider } from "./contexts/ThemeContextProvider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
   </StrictMode>
 );

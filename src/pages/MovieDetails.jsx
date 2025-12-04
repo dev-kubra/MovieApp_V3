@@ -4,6 +4,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import Loading from "../components/Loading";
 import SimilarMovies from "./SimilarMovies";
 
+
 const apiUrl = "https://api.themoviedb.org/3"
 const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDY4NjMyNTI0NDAxMTM0NDJiNjExN2VlNWE1MzdiZSIsIm5iZiI6MTc2MTIzNTI5Ni4wMDQ5OTk5LCJzdWIiOiI2OGZhNTE1ZmE4YjI4MzM4NmVmMjlkODYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.50Ki8oFdaptPvfPnh2z78LhWeleEAWkVyQLzOd7tQnw";
 const language = "tr-TR";
@@ -104,20 +105,15 @@ export default function MovieDetails() {
       </div>
 
       <div className="container my-3">
-        <div className="card">
-          <div className="card-header">
-            <h5 className="card-title">Kadro</h5>
-          </div>
-          <div className="card-body">
+        <h1 className="mb-3 h4">Kadro</h1>
             <div className="row">
               {movie.credits.cast.slice(0, 12).map((actor)=>(
                 <div className="col-md-2 col-sm-2" key={actor.id}>
-                  <img src={"https://image.tmdb.org/t/p/original/" + actor.profile_path} alt={actor.name} className="img-fluid" />
+                  <img src={"https://image.tmdb.org/t/p/original/" + actor.profile_path} alt={actor.name} className="img-fluid img-thumbnail rounded shadow" />
                   <p>{actor.name}</p>
                 </div>
               ))}
-            </div>
-          </div>
+            
         </div>
       </div>
       <SimilarMovies movieId={id}/>
