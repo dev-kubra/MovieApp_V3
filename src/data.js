@@ -31,12 +31,4 @@ export const movie_list = [
     is_active: true,
     is_new: true,
   },
-  {
-    id: 5,
-    image: "5.jpg",
-    title: "Selam",
-    description: "Güzel bir film",
-    is_active: true,
-    is_new: true,
-  },
 ];
