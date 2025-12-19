@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import ErrorMessage from "../components/ErrorMessage";
 import Loading from "../components/Loading";
 import SimilarMovies from "./SimilarMovies";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContextProvider";
 
 
 const apiUrl = "https://api.themoviedb.org/3"
@@ -17,6 +19,11 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const { addToWatchList, watchList, removeToWatchList } = useContext(UserContext);
+
+  const isAdded = watchList?.find((i) => ((i.id) == movie?.id));
+
 
   useEffect(() => {
     async function getMovie() {
@@ -80,10 +87,22 @@ export default function MovieDetails() {
                     {movie.runtime} dk
                 </p>
                 <p>
-                  <span className="bagde bg-warning">
+                  <span className="bagde p-1 bg-warning rounded">
                     {Math.round(movie.vote_average*10)}%
                   </span>
+                  <span className="badge bg-danger fs-6 ms-2 pointer">
+                  <>
+                    {
+                      isAdded ? (
+                        <i className="bi bi-heart-fill" onClick={()=>(removeToWatchList(movie))}></i>
+                      ):(
+                        <i className="bi bi-heart" onClick={()=>(addToWatchList(movie))}></i>
+                      )
+                    }
+                  </>
+                  </span>
                 </p>
+                
                 {movie.overview && (
                   <p className="lead">
                     <strong>Özet: </strong> {movie.overview}

@@ -78,7 +78,6 @@ export default function App2() {
     getMovies();
   }, [searchQuery]);
 
-  
 
   function handleAddToWatchList(movie) {
     const isAddedToList = watchListMovies.map((i)=>i.id).includes(movie.id)
@@ -86,10 +85,10 @@ export default function App2() {
       setWatchListMovies((movies)=>[...movies, movie]);
     }
   }
-
   function handleRemoveToWatchList(movie){
     setWatchListMovies(movies=>movies.filter(i => i.id !== movie.id));
   }
+
   function handleSelectedMovie(movie) {
     setSelectedMovie(movie);
   }
