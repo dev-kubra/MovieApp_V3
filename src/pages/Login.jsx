@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContextProvider";
-import { useState } from "react";
+import { useRef } from "react";
 
 export default function Login () {
   const { theme } = useContext(ThemeContext);
@@ -8,31 +8,41 @@ export default function Login () {
   const btnColor = theme === "dark" ? "light" : "dark";
 
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    username: "",
-    phone: "",
-    address:""
-  })
+  // const [formData, setFormData] = useState({
+  //   email: "",
+  //   password: "",
+  //   username: "",
+  //   phone: "",
+  //   address:""
+  // })
 
-  function handleChangeFormData(e) {
-    const { name , value } = e.target; //destructing yapiyoruz, objeyi parcalayip icinden istedigimiz property leri aaldik
-    setFormData((prevFormData)=>({...prevFormData, [name]: value }));
-    console.log(name, value);
+  //State tanimlamak yerine useRef kullanacagiz
+  const email = useRef();
+  const password = useRef();
 
-  }
+  // function handleChangeFormData(e) {
+  //   // const { name , value } = e.target; //destructing yapiyoruz, objeyi parcalayip icinden istedigimiz property leri aaldik
+  //   setFormData((prevFormData)=>({...prevFormData, [name]: value }));
+  //   console.log(name, value);
+
+  // }
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(formData);
-    setFormData({
-      email: "",
-      password: "",
-      username: "",
-      phone: "",
-      address:""
-    });
+    console.log(email.current.value);
+    console.log(password.current.value);
+
+    email.current.value = "";
+    password.current.value = "";
+
+    // console.log(formData);
+    // setFormData({
+    //   email: "",
+    //   password: "",
+    //   username: "",
+    //   phone: "",
+    //   address:""
+    // });
   }
   return(
     <div className="container py-3">
@@ -46,11 +56,25 @@ export default function Login () {
               <form onSubmit={handleFormSubmit}>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChangeFormData} id="email" className="form-control" />
+                  <input 
+                  type="email" 
+                  name="email" 
+                  // value={formData.email} 
+                  // onChange={handleChangeFormData} 
+                  ref={email}
+                  id="email" 
+                  className="form-control" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">Password</label>
-                  <input type="password" name="password" value={formData.password} onChange={handleChangeFormData} id="password" className="form-control" />
+                  <input 
+                  type="password" 
+                  name="password" 
+                  // value={formData.password} 
+                  // onChange={handleChangeFormData} 
+                  ref={password}
+                  id="password" 
+                  className="form-control" />
                 </div>
                 <button className={`btn btn-outline-${btnColor}`}>Submit</button>
           
