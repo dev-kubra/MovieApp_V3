@@ -9,6 +9,7 @@ import SearchResults from "./pages/SearchResults";
 import UserWatchList from "./pages/UserWatchList";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import LoginState from "./pages/LoginState";
 
 
 const routes = createBrowserRouter([
@@ -22,7 +23,7 @@ const routes = createBrowserRouter([
       {path: "watchlist/movies/:id", element:<MovieDetails/>},
       {path: "search", element: <SearchResults/>},
       {path: "watchlist", element: <UserWatchList/>},
-      {path: "login", element: <Login/>},
+      {path: "login", element: <LoginState/>},
       {path: "register", element: <Register/>}
 
     ]
