@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContextProvider";
 import { useRef } from "react";
+import { useState } from "react";
+import Input from "../components/Input";
 
 export default function Login () {
   const { theme } = useContext(ThemeContext);
@@ -16,9 +18,16 @@ export default function Login () {
   //   address:""
   // })
 
+
   //State tanimlamak yerine useRef kullanacagiz
   const email = useRef();
   const password = useRef();
+
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const [isEdited, setIsEdited] = useState({email:false, password:false});
+
 
   // function handleChangeFormData(e) {
   //   // const { name , value } = e.target; //destructing yapiyoruz, objeyi parcalayip icinden istedigimiz property leri aaldik
@@ -29,9 +38,32 @@ export default function Login () {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+
+    if(emailError || passwordError){
+      return;
+    }
+
+    setEmailError(false);
+    setPasswordError(false);
+
+    const emailVal = email.current.value;
+    const passwordVal = password.current.value;
+
+    const emailIsInvalid = isEdited.email && !emailVal.includes("@");
+    const passwordIsInvalid = isEdited.password && passwordVal.length < 5;
+    
+
+    if(emailIsInvalid) {
+      setEmailError(true);
+      return;
+    }
+    if(passwordIsInvalid) {
+      setPasswordError(true);
+      return;
+    }
+
     console.log(email.current.value);
     console.log(password.current.value);
-
     email.current.value = "";
     password.current.value = "";
 
@@ -44,6 +76,44 @@ export default function Login () {
     //   address:""
     // });
   }
+
+  function handleEmailChange(){
+
+    setEmailError(false);
+  }
+  function handlePasswordChange(){
+
+    setPasswordError(false);
+  }
+  function handleOnBlur(e){
+    const {name} = e.target;
+
+    if(name==="email") {
+      const val = !email.current.value.includes("@") ;
+      if(val){
+        setEmailError(true);
+        return;
+      }
+    }
+    if(name=== "password") {
+      const val = password.current.value.length<5;
+      if(val){
+        setPasswordError(true);
+        return;
+      }
+      
+    }
+
+
+    //isEdited'i burada duzenleme sebebimiz de kullanici inputa yazma eylemini tamamlamis baska bir yere tikladigi anda yani blur event'ini tetikledigi anda hata mesajini gorunur olmaya hazir hale getiriyoruz, eger @ karakter kuralina ya da min-5-karakter kuralina uymuyorsa hata mesaji name:true oldugu icin gorunur olacak
+    setIsEdited((prev)=>({
+      ...prev,
+      [name]: true
+    }))
+  }
+  
+
+
   return(
     <div className="container py-3">
       <div className="row">
@@ -53,8 +123,11 @@ export default function Login () {
               <h2>Login</h2>
             </div>
             <div className="card-body">
-              <form onSubmit={handleFormSubmit}>
-                <div className="mb-3">
+              <form onSubmit={handleFormSubmit} noValidate>
+
+                <Input id="email" labelText="Email" error={emailError && "Geçerli bir email giriniz"} ref={email} handleOnChange={handleEmailChange} handleOnBlur={handleOnBlur}/>
+                
+                {/* <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email</label>
                   <input 
                   type="email" 
@@ -64,8 +137,18 @@ export default function Login () {
                   ref={email}
                   id="email" 
                   className="form-control" />
-                </div>
-                <div className="mb-3">
+                  {emailError &&(
+                    <div className="invalid-feedback d-block">
+                      Geçerli bir email giriniz!
+                    </div>
+                  )}
+                </div> */}
+
+
+
+                <Input id="password" labelText="Password" error={passwordError && "Parolanız 5 karakterden fazla olmak zorunda"} ref={password} handleOnChange={handlePasswordChange} handleOnBlur={handleOnBlur}/>
+
+                {/* <div className="mb-3">
                   <label htmlFor="password" className="form-label">Password</label>
                   <input 
                   type="password" 
@@ -75,7 +158,17 @@ export default function Login () {
                   ref={password}
                   id="password" 
                   className="form-control" />
-                </div>
+                  {passwordError &&(
+                    <div className="invalid-feedback d-block">
+                      Geçerli bir password giriniz!
+                    </div>
+                  )}
+                </div> */}
+
+
+
+
+
                 <button className={`btn btn-outline-${btnColor}`}>Submit</button>
           
               </form>

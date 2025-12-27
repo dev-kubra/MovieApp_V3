@@ -23,7 +23,7 @@ const routes = createBrowserRouter([
       {path: "watchlist/movies/:id", element:<MovieDetails/>},
       {path: "search", element: <SearchResults/>},
       {path: "watchlist", element: <UserWatchList/>},
-      {path: "login", element: <LoginState/>},
+      {path: "login", element: <Login/>},
       {path: "register", element: <Register/>}
 
     ]
