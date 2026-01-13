@@ -1,12 +1,37 @@
-# React + Vite
+Movie App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🌐 Live Demo
+🔗 https://movie-app.vercel.app
 
-Currently, two official plugins are available:
+This project is a Movie Application built with React using the TMDB API.
+It focuses on component-based architecture, global state management, and real-world frontend patterns.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#Features
+Browse movies using TMDB API
+Add / remove movies to a personal watchlist
+Dark / Light theme support
+Client-side routing with React Router
+Persistent data using localStorage
+Global state management with Context API
 
-## Expanding the ESLint configuration
+#Technologies Used
+React (Functional Components & Hooks)
+JavaScript (ES6+)
+React Router
+Context API
+TMDB API
+localStorage
+CSS / Bootstrap
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#What I Focused On
+This project was created to practice and understand:
+Component-based UI development
+React Hooks (useState, useEffect, useContext)
+Global state management with Context API
+Managing side effects and API data
+Client-side routing logic
+Writing clean, readable, and reusable code
+
+
+
+
