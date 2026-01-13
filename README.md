@@ -1,6 +1,6 @@
 Movie App
 
-## 🌐 Live Demo
+Live Demo:
 🔗 https://movie-app.vercel.app
 
 This project is a Movie Application built with React using the TMDB API.
