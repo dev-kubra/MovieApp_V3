@@ -1,7 +1,7 @@
 Movie App
 
 Live Demo:
-🔗 https://movie-app.vercel.app
+🔗 https://movieappv3.vercel.app
 
 This project is a Movie Application built with React using the TMDB API.
 It focuses on component-based architecture, global state management, and real-world frontend patterns.
