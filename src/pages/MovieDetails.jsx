@@ -8,7 +8,7 @@ import { UserContext } from "../contexts/UserContextProvider";
 
 
 const apiUrl = "https://api.themoviedb.org/3"
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDY4NjMyNTI0NDAxMTM0NDJiNjExN2VlNWE1MzdiZSIsIm5iZiI6MTc2MTIzNTI5Ni4wMDQ5OTk5LCJzdWIiOiI2OGZhNTE1ZmE4YjI4MzM4NmVmMjlkODYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.50Ki8oFdaptPvfPnh2z78LhWeleEAWkVyQLzOd7tQnw";
+const token = import.meta.env.VITE_TMDB_TOKEN;
 const language = "tr-TR";
 
 

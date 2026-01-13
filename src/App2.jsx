@@ -19,7 +19,7 @@ import ErrorMessage from "./components/ErrorMessage";
 import MovieDetails from "./components/MovieDetails";
 
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDY4NjMyNTI0NDAxMTM0NDJiNjExN2VlNWE1MzdiZSIsIm5iZiI6MTc2MTIzNTI5Ni4wMDQ5OTk5LCJzdWIiOiI2OGZhNTE1ZmE4YjI4MzM4NmVmMjlkODYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.50Ki8oFdaptPvfPnh2z78LhWeleEAWkVyQLzOd7tQnw";
+const token = import.meta.env.VITE_TMDB_TOKEN;
 const page = 1;
 const query = "batman";
 const language = "tr-TR";
